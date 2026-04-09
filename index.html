@@ -13,12 +13,15 @@
     --text:#f4f4f5; --muted:#71717a; --muted2:#52525b;
     --accent:#7c6af7; --accent2:#a78bfa; --accent-glow:rgba(124,106,247,0.15);
     --teal:#2dd4bf; --coral:#f87171; --amber:#fbbf24; --green:#4ade80;
-    --font-display:'Syne',sans-serif; --font-body:'DM Sans',sans-serif; --font-mono:'DM Mono',monospace;
+    --font-display:'Syne',sans-serif;
+    --font-body:'DM Sans',sans-serif;
+    --font-mono:'DM Mono',monospace;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 
+  /* NAV */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(9,9,11,0.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
   .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--text);text-decoration:none;letter-spacing:-0.02em;}
   .nav-logo span{color:var(--accent2);}
@@ -28,6 +31,7 @@
   .nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.1rem;border-radius:6px;text-decoration:none;font-size:0.82rem;font-weight:500;transition:opacity 0.2s,transform 0.2s;}
   .nav-cta:hover{opacity:0.85;transform:translateY(-1px);}
 
+  /* HERO */
   .hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden;}
   .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,106,247,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,106,247,0.04) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);}
   .hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(124,106,247,0.1) 0%,transparent 70%);pointer-events:none;}
@@ -50,12 +54,14 @@
   .stat-num{font-family:var(--font-display);font-size:2rem;font-weight:700;line-height:1;}
   .stat-label{font-size:0.72rem;color:var(--muted);margin-top:0.25rem;letter-spacing:0.06em;text-transform:uppercase;}
 
+  /* SHARED */
   .divider{width:100%;height:1px;background:var(--border);max-width:1100px;margin:0 auto;}
   section{padding:5.5rem 3rem;max-width:1100px;margin:0 auto;}
   .section-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent2);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem;}
   .section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:0.75rem;}
   .section-sub{color:var(--muted);font-size:0.95rem;max-width:500px;font-weight:300;margin-bottom:2.5rem;}
 
+  /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
   .about-text p{color:var(--muted);font-weight:300;line-height:1.9;margin-bottom:1rem;font-size:0.95rem;}
   .about-text p strong{color:var(--text);font-weight:500;}
@@ -64,6 +70,7 @@
   .about-link:hover{color:var(--accent2);}
   .alink-icon{width:26px;height:26px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-family:var(--font-mono);color:var(--muted);}
 
+  /* SKILLS */
   .skill-group-label{font-size:0.68rem;color:var(--muted2);text-transform:uppercase;letter-spacing:0.1em;font-family:var(--font-mono);margin:1.25rem 0 0.5rem;}
   .skill-group-label:first-child{margin-top:0;}
   .chips{display:flex;flex-wrap:wrap;gap:0.45rem;}
@@ -74,6 +81,7 @@
   .cc{border-color:rgba(248,113,113,0.35);background:rgba(248,113,113,0.08);color:var(--coral);}
   .cg{border-color:rgba(74,222,128,0.35);background:rgba(74,222,128,0.08);color:var(--green);}
 
+  /* PROJECTS */
   .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:1.25rem;}
   .pcard{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:0.85rem;transition:all 0.25s;position:relative;overflow:hidden;}
   .pcard::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,106,247,0.05) 0%,transparent 60%);opacity:0;transition:opacity 0.3s;}
@@ -93,6 +101,7 @@
   .ptag{padding:0.22rem 0.55rem;background:var(--surface2);border:1px solid var(--border);border-radius:4px;font-size:0.68rem;color:var(--muted);font-family:var(--font-mono);}
   .code-block{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);line-height:1.9;}
 
+  /* EXPERIENCE — FIXED: block layout so bold words don't break lines */
   .timeline{position:relative;padding-left:1.5rem;}
   .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border);}
   .tl-item{position:relative;padding-bottom:2.75rem;padding-left:2rem;}
@@ -101,11 +110,12 @@
   .tl-company{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--text);letter-spacing:-0.02em;}
   .tl-period{font-size:0.72rem;color:var(--muted);font-family:var(--font-mono);padding:0.2rem 0.55rem;background:var(--surface2);border:1px solid var(--border);border-radius:4px;white-space:nowrap;}
   .tl-role{color:var(--accent2);font-size:0.82rem;font-family:var(--font-mono);margin-bottom:0.85rem;}
-  .tl-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
-  .tl-bullets li{font-size:0.875rem;color:var(--muted);font-weight:300;line-height:1.7;padding-left:1.3rem;position:relative;}
-  .tl-bullets li::before{content:'→';color:var(--accent2);position:absolute;left:0;top:0.05em;}
+  .tl-bullets{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+  .tl-bullets li{font-size:0.875rem;color:var(--muted);font-weight:300;line-height:1.75;padding-left:1.35rem;position:relative;}
+  .tl-bullets li::before{content:'→';color:var(--accent2);position:absolute;left:0;top:0;}
   .tl-bullets li strong{color:var(--text);font-weight:500;}
 
+  /* EDUCATION */
   .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
   .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;gap:0.5rem;}
   .edu-degree{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--text);letter-spacing:-0.01em;}
@@ -113,6 +123,7 @@
   .edu-meta{font-size:0.78rem;color:var(--muted);font-family:var(--font-mono);}
   .edu-gpa{display:inline-block;margin-top:0.25rem;font-size:0.72rem;font-family:var(--font-mono);padding:0.2rem 0.6rem;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);border-radius:4px;color:var(--green);}
 
+  /* CONTACT */
   .contact-wrap{padding:5rem 3rem;max-width:1100px;margin:0 auto;}
   .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:4rem;text-align:center;position:relative;overflow:hidden;}
   .contact-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(124,106,247,0.09) 0%,transparent 70%);}
@@ -124,16 +135,19 @@
   .contact-item a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
   .contact-item a:hover{color:var(--accent2);}
 
+  /* FOOTER */
   footer{border-top:1px solid var(--border);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;}
   .footer-l{font-family:var(--font-mono);font-size:0.75rem;color:var(--muted2);}
   .footer-r{display:flex;gap:1.5rem;}
   .footer-r a{color:var(--muted2);text-decoration:none;font-size:0.75rem;transition:color 0.2s;}
   .footer-r a:hover{color:var(--text);}
 
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  /* REVEAL ANIMATION */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
   .reveal.visible{opacity:1;transform:translateY(0);}
   .d1{transition-delay:0.1s;} .d2{transition-delay:0.2s;} .d3{transition-delay:0.3s;}
 
+  /* RESPONSIVE */
   @media(max-width:768px){
     nav{padding:1rem 1.5rem;} .nav-links{display:none;}
     .hero{padding:7rem 1.5rem 3rem;} section{padding:4rem 1.5rem;}
@@ -160,6 +174,7 @@
   <a href="https://linkedin.com/in/bhakti-shelke" target="_blank" class="nav-cta">Let's Connect ↗</a>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
@@ -177,7 +192,7 @@
     <div class="hero-actions">
       <a href="#projects" class="btn-primary">View My Work ↓</a>
       <a href="https://linkedin.com/in/bhakti-shelke" target="_blank" class="btn-ghost">LinkedIn ↗</a>
-      <a href="/cdn-cgi/l/email-protection#e3818b8288978a908b868f8886d3d7d6a3848e828a8fcd808c8e" class="btn-ghost">Email ↗</a>
+      <a href="mailto:bhaktishelke045@gmail.com" class="btn-ghost">Email ↗</a>
     </div>
     <div class="hero-stats">
       <div><div class="stat-num">5+</div><div class="stat-label">Years Python</div></div>
@@ -190,21 +205,22 @@
 
 <div class="divider"></div>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="section-label">// about me</div>
   <div class="about-grid">
-    <div class="about-text reveal">
+    <div class="about-text">
       <h2 class="section-title">Building AI that<br>ships and scales</h2>
       <p>I'm a <strong>Senior Python Developer and AI Engineer</strong> with 5+ years delivering scalable data ingestion pipelines, LLM-powered classification systems, and production-grade RAG architectures.</p>
       <p>At <strong>Harlem Children's Zone</strong> in New York, I architect agentic AI systems using LangGraph, AWS Bedrock, and Llama — building the orchestration layers, vector search pipelines, and microservices that connect LLMs to enterprise systems at real scale.</p>
       <p>Previously at ZiSystech (FinTech) and JSW Steel. <strong>MS in Data Science from Pace University (GPA 3.60)</strong>, BE in Computer Science from University of Mumbai (GPA 3.80).</p>
       <div class="about-links">
         <a href="https://linkedin.com/in/bhakti-shelke" target="_blank" class="about-link"><span class="alink-icon">in</span>linkedin.com/in/bhakti-shelke</a>
-        <a href="/cdn-cgi/l/email-protection#711319101a05180219141d1a1441454431161c10181d5f121e1c" class="about-link"><span class="alink-icon">@</span><span class="__cf_email__" data-cfemail="55373d343e213c263d30393e30656160153238343c397b363a38">[email&#160;protected]</span></a>
+        <a href="mailto:bhaktishelke045@gmail.com" class="about-link"><span class="alink-icon">@</span>bhaktishelke045@gmail.com</a>
         <a href="tel:+15514309955" class="about-link"><span class="alink-icon">☎</span>+1 551-430-9955</a>
       </div>
     </div>
-    <div class="reveal d1">
+    <div>
       <div class="skill-group-label">Python & Backend</div>
       <div class="chips"><span class="chip cp">Python (5+ yrs)</span><span class="chip cp">FastAPI</span><span class="chip cp">REST APIs</span><span class="chip cp">Microservices</span><span class="chip cp">Docker</span><span class="chip cp">CI/CD</span><span class="chip cp">GitHub Actions</span></div>
       <div class="skill-group-label">LLMs & AI</div>
@@ -221,6 +237,7 @@
 
 <div class="divider"></div>
 
+<!-- PROJECTS -->
 <section id="projects">
   <div class="section-label">// selected work</div>
   <h2 class="section-title reveal">Projects</h2>
@@ -302,6 +319,7 @@
 
 <div class="divider"></div>
 
+<!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-label">// career</div>
   <h2 class="section-title reveal">Experience</h2>
@@ -314,9 +332,9 @@
       </div>
       <ul class="tl-bullets">
         <li>Architected Python-based data ingestion pipelines integrating structured and unstructured data into LLM workflows, enabling scalable classification and summarization across enterprise datasets.</li>
-        <li>Implemented <strong>Llama via AWS Bedrock</strong> for text classification and summarization — reduced hallucination rate by <strong>35%+</strong> through rubric scoring and retrieval recall evaluation frameworks.</li>
+        <li>Implemented Llama via <strong>AWS Bedrock</strong> for text classification and summarization — reduced hallucination rate by <strong>35%+</strong> through rubric scoring and retrieval recall evaluation frameworks.</li>
         <li>Built modular <strong>RAG pipelines</strong> (Pinecone/FAISS) cutting analyst manual research time by <strong>40–60%</strong>, eliminating a full sprint of manual work per project cycle.</li>
-        <li>Engineered <strong>LangGraph state-machine orchestration</strong> for deterministic multi-step agent execution with automatic error recovery — reduced failure-driven reruns by <strong>~50%</strong>.</li>
+        <li>Engineered <strong>LangGraph</strong> state-machine orchestration for deterministic multi-step agent execution with automatic error recovery — reduced failure-driven reruns by <strong>~50%</strong>.</li>
         <li>Shipped secure Python microservices and REST APIs connecting LLM agents to <strong>5+ enterprise systems</strong> (AWS Lambda, S3, Bedrock, Snowflake) with zero-downtime, auditable handoffs.</li>
         <li>Built reusable prompt evaluation harness (LLMOps) cutting model iteration from <strong>2 days to under 4 hours</strong>; adopted across 3 internal AI products.</li>
       </ul>
@@ -348,6 +366,7 @@
 
 <div class="divider"></div>
 
+<!-- EDUCATION -->
 <section id="education">
   <div class="section-label">// education</div>
   <h2 class="section-title reveal">Education</h2>
@@ -369,18 +388,19 @@
 
 <div class="divider"></div>
 
+<!-- CONTACT -->
 <div class="contact-wrap" id="contact">
   <div class="contact-card reveal">
     <h2>Let's build something<br>remarkable together.</h2>
     <p>Open to Senior Python, LLM Engineer, and AI Engineer roles. Based in Jersey City, NJ — open to NYC and remote.</p>
     <div class="contact-actions">
-      <a href="/cdn-cgi/l/email-protection#83e1ebe2e8f7eaf0ebe6efe8e6b3b7b6c3e4eee2eaefade0ecee" class="btn-primary">Say Hello ✉</a>
+      <a href="mailto:bhaktishelke045@gmail.com" class="btn-primary">Say Hello ✉</a>
       <a href="https://linkedin.com/in/bhakti-shelke" target="_blank" class="btn-ghost">LinkedIn ↗</a>
     </div>
     <div class="contact-detail">
       <span class="contact-item">📍 Jersey City, NJ</span>
       <span class="contact-item"><a href="tel:+15514309955">+1 551-430-9955</a></span>
-      <span class="contact-item"><a href="/cdn-cgi/l/email-protection#a2c0cac3c9d6cbd1cac7cec9c7929697e2c5cfc3cbce8cc1cdcf"><span class="__cf_email__" data-cfemail="debcb6bfb5aab7adb6bbb2b5bbeeeaeb9eb9b3bfb7b2f0bdb1b3">[email&#160;protected]</span></a></span>
+      <span class="contact-item"><a href="mailto:bhaktishelke045@gmail.com">bhaktishelke045@gmail.com</a></span>
     </div>
   </div>
 </div>
@@ -389,4 +409,30 @@
   <div class="footer-l">© 2026 Bhakti Rajendra Shelke · Senior Python & LLM Engineer</div>
   <div class="footer-r">
     <a href="https://linkedin.com/in/bhakti-shelke" target="_blank">LinkedIn</a>
-    <a href="/cdn-cgi/l/email-p
+    <a href="mailto:bhaktishelke045@gmail.com">Email</a>
+    <a href="tel:+15514309955">Phone</a>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll — threshold 0 catches elements immediately on entry
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Immediately show anything already visible in the viewport on load
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('visible');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
