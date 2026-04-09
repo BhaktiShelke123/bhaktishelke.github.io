@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhakti Shelke — AI Engineer & Data Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #09090b;
+    --surface: #111115;
+    --surface2: #18181d;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #f4f4f5;
+    --muted: #71717a;
+    --accent: #7c6af7;
+    --accent2: #a78bfa;
+    --accent-glow: rgba(124,106,247,0.15);
+    --teal: #2dd4bf;
+    --coral: #f87171;
+    --amber: #fbbf24;
+    --green: #4ade80;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(9,9,11,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent2); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(124,106,247,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,106,247,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 20%; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(124,106,247,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-glow);
+    border: 1px solid rgba(124,106,247,0.3);
+    border-radius: 100px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.8rem;
+    color: var(--accent2);
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 .name-line { display: block; }
+  .hero h1 .role-line {
+    display: block;
+    background: linear-gradient(135deg, var(--accent2) 0%, var(--teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124,106,247,0.3); }
+
+  .btn-ghost {
+    border: 1px solid var(--border2);
+    color: var(--text);
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent2); background: var(--accent-glow); }
+
+  .hero-stats {
+    margin-top: 4rem;
+    display: flex;
+    gap: 3rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent2);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 520px;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.9;
+    margin-bottom: 1rem;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  .about-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .about-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .about-link:hover { color: var(--accent2); }
+  .about-link-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+  }
+
+  .skills-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .skill-chip {
+    padding: 0.4rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    border: 1px solid;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .chip-purple { border-color: rgba(124,106,247,0.4); background: rgba(124,106,247,0.08); color: var(--accent2); }
+  .chip-teal { border-color: rgba(45,212,191,0.4); background: rgba(45,212,191,0.08); color: var(--teal); }
+  .chip-amber { border-color: rgba(251,191,36,0.4); background: rgba(251,191,36,0.08); color: var(--amber); }
+  .chip-coral { border-color: rgba(248,113,113,0.4); background: rgba(248,113,113,0.08); color: var(--coral); }
+  .chip-green { border-color: rgba(74,222,128,0.4); background: rgba(74,222,128,0.08); color: var(--green); }
+
+  .skills-section-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 1.5rem 0 0.75rem;
+    font-family: var(--font-mono);
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(124,106,247,0.06) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover {
+    border-color: rgba(124,106,247,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(124,106,247,0.15);
+  }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2.5rem;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .project-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .icon-purple { background: rgba(124,106,247,0.12); }
+  .icon-teal { background: rgba(45,212,191,0.12); }
+  .icon-amber { background: rgba(251,191,36,0.12); }
+  .icon-coral { background: rgba(248,113,113,0.12); }
+
+  .project-link-arrow {
+    color: var(--muted);
+    font-size: 1.2rem;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .project-card:hover .project-link-arrow { color: var(--accent2); transform: translate(2px, -2px); }
+
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+  .tag {
+    padding: 0.25rem 0.6rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+
+  .project-metric {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+  .metric-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ── EXPERIENCE ── */
+  .timeline {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px; top: 8px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 3px rgba(124,106,247,0.2);
+  }
+  .timeline-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .timeline-company {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .timeline-role {
+    color: var(--accent2);
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-family: var(--font-mono);
+  }
+  .timeline-period {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    padding: 0.2rem 0.6rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-left: auto;
+  }
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .timeline-bullets li {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 300;
+    display: flex;
+    gap: 0.75rem;
+    line-height: 1.6;
+  }
+  .timeline-bullets li::before {
+    content: '→';
+    color: var(--accent2);
+    flex-shrink: 0;
+    margin-top: 0.05em;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 6rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(124,106,247,0.1) 0%, transparent 70%);
+  }
+  .contact-card h2 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .contact-card p {
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 400px;
+    margin: 0 auto 2.5rem;
+    position: relative;
+  }
+  .contact-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  footer .footer-left {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  footer .footer-right {
+    display: flex;
+    gap: 1.5rem;
+  }
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--text); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-template-columns: 1fr; grid-column: auto; }
+    .hero-stats { gap: 2rem; }
+    .contact-card { padding: 2.5rem 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">B<span>.</span>Shelke</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://linkedin.com/in/bhakti-shelke" target="_blank" class="nav-cta">Let's Connect ↗</a>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">● Available for new opportunities</div>
+    <h1>
+      <span class="name-line">Bhakti Shelke</span>
+      <span class="role-line">AI Engineer &<br>Data Scientist</span>
+    </h1>
+    <p class="hero-sub">
+      I build intelligent systems that turn complex, messy data into real-world impact — from LLM-powered applications to end-to-end ML pipelines. Currently at <strong style="color:var(--text)">Harlem Children's Zone</strong>, making AI work for people who need it most.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View My Work ↓</a>
+      <a href="https://github.com/bhaktishelke" target="_blank" class="btn-ghost">GitHub ↗</a>
+      <a href="https://linkedin.com/in/bhakti-shelke" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years in AI/ML</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Projects Shipped</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">13K+</div>
+        <div class="stat-label">Lives Impacted</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-label">// about me</div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <h2 class="section-title">Building AI that<br>actually matters</h2>
+      <p>I'm an AI Engineer and Data Scientist with a track record of shipping production ML systems across social impact, SaaS, and industrial domains. My work spans the full stack — from data pipelines and feature engineering to LLM applications and deployed models.</p>
+      <p>At <strong>Harlem Children's Zone</strong>, I leverage Python, PyTorch, and LLMs to help a nonprofit serving 13,000+ children make better decisions with better data. Before that, I built ML systems at SoGoSurvey and began my career analyzing industrial data at JSW Steel India.</p>
+      <p>I believe the best AI work is invisible — it just makes things work better for real people.</p>
+      <div class="about-links">
+        <a href="https://linkedin.com/in/bhakti-shelke" target="_blank" class="about-link">
+          <span class="about-link-icon">in</span>
+          linkedin.com/in/bhakti-shelke
+        </a>
+        <a href="https://github.com/bhaktishelke" target="_blank" class="about-link">
+          <span class="about-link-icon">gh</span>
+          github.com/bhaktishelke
+        </a>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="skills-section-label">Languages & Frameworks</div>
+      <div class="skills-cloud">
+        <span class="skill-chip chip-purple">Python</span>
+        <span class="skill-chip chip-purple">SQL</span>
+        <span class="skill-chip chip-purple">PyTorch</span>
+        <span class="skill-chip chip-purple">FastAPI</span>
+        <span class="skill-chip chip-purple">LangChain</span>
+      </div>
+
+      <div class="skills-section-label">AI / ML</div>
+      <div class="skills-cloud">
+        <span class="skill-chip chip-teal">LLMs</span>
+        <span class="skill-chip chip-teal">RAG</span>
+        <span class="skill-chip chip-teal">Prompt Engineering</span>
+        <span class="skill-chip chip-teal">XGBoost</span>
+        <span class="skill-chip chip-teal">Feature Engineering</span>
+        <span class="skill-chip chip-teal">A/B Testing</span>
+      </div>
+
+      <div class="skills-section-label">Data & Infrastructure</div>
+      <div class="skills-cloud">
+        <span class="skill-chip chip-amber">Airflow</span>
+        <span class="skill-chip chip-amber">dbt</span>
+        <span class="skill-chip chip-amber">Spark</span>
+        <span class="skill-chip chip-amber">AWS</span>
+        <span class="skill-chip chip-amber">BigQuery</span>
+        <span class="skill-chip chip-amber">ETL</span>
+      </div>
+
+      <div class="skills-section-label">Visualization</div>
+      <div class="skills-cloud">
+        <span class="skill-chip chip-coral">Tableau</span>
+        <span class="skill-chip chip-coral">Power BI</span>
+        <span class="skill-chip chip-coral">Matplotlib</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="section-label">// selected work</div>
+  <h2 class="section-title reveal">Projects</h2>
+  <p class="section-subtitle reveal">A selection of what I've built — from LLM-powered tools to production ML systems.</p>
+
+  <div class="projects-grid">
+
+    <!-- Featured: TaskEase -->
+    <div class="project-card featured reveal">
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="project-header">
+          <div class="project-icon icon-purple">✅</div>
+          <a href="https://github.com/bhaktishelke/taskease" target="_blank" class="project-link-arrow">↗</a>
+        </div>
+        <div class="project-title">TaskEase — AI Task Management</div>
+        <div class="project-desc">An intelligent task management system that uses AI to auto-prioritize, categorize, and schedule tasks. Built with a clean admin/user role system, real-time progress tracking, and a natural language interface for task creation. Designed to make productivity effortless and data-driven.</div>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem;">
+          <div class="project-metric"><span class="metric-dot" style="background:var(--teal)"></span><span style="color:var(--muted);font-size:0.85rem;">Smart task prioritization with ML ranking</span></div>
+          <div class="project-metric"><span class="metric-dot" style="background:var(--accent2)"></span><span style="color:var(--muted);font-size:0.85rem;">Role-based access: admins + users</span></div>
+          <div class="project-metric"><span class="metric-dot" style="background:var(--amber)"></span><span style="color:var(--muted);font-size:0.85rem;">Leave management & progress tracking</span></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">LLMs</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Bootstrap</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;justify-content:center;">
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;font-family:var(--font-mono);font-size:0.78rem;color:var(--muted);line-height:1.8;">
+          <div style="color:var(--accent2);margin-bottom:0.75rem;"># system architecture</div>
+          <div>┌─ <span style="color:var(--teal)">NLP Layer</span></div>
+          <div>│   ├─ Task intent parsing</div>
+          <div>│   └─ Priority scoring</div>
+          <div>├─ <span style="color:var(--accent2)">API Layer</span> (FastAPI)</div>
+          <div>│   ├─ Auth & roles</div>
+          <div>│   └─ CRUD operations</div>
+          <div>└─ <span style="color:var(--amber)">Data Layer</span></div>
+          <div>    ├─ MySQL / SQLite</div>
+          <div>    └─ Analytics pipeline</div>
+        </div>
+        <a href="https://github.com/bhaktishelke/taskease" target="_blank" class="btn-primary" style="justify-content:center;text-decoration:none;">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- Advanced Document Search Engine -->
+    <a href="https://github.com/bhaktishelke" target="_blank" class="project-card reveal">
+      <div class="project-header">
+        <div class="project-icon icon-teal">🔍</div>
+        <span class="project-link-arrow">↗</span>
+      </div>
+      <div class="project-title">Advanced Document Search Engine</div>
+      <div class="project-desc">Semantic search over large document corpora using LLM embeddings and vector retrieval. Surfaces relevant information from unstructured text at scale — with sub-second query times.</div>
+      <div class="project-tags">
+        <span class="tag">LLMs</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">Python</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">AWS</span>
+      </div>
+    </a>
+
+    <!-- Churn Prediction Pipeline -->
+    <a href="https://github.com/bhaktishelke" target="_blank" class="project-card reveal reveal-delay-1">
+      <div class="project-header">
+        <div class="project-icon icon-amber">📊</div>
+        <span class="project-link-arrow">↗</span>
+      </div>
+      <div class="project-title">Churn Prediction & Risk Pipeline</div>
+      <div class="project-desc">End-to-end ML pipeline to predict user churn and flag high-risk accounts. Reduced false positive rate by 30% through careful feature engineering and threshold calibration.</div>
+      <div class="project-tags">
+        <span class="tag">XGBoost</span>
+        <span class="tag">Python</span>
+        <span class="tag">Airflow</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Tableau</span>
+      </div>
+    </a>
+
+    <!-- LLM Extraction Tool -->
+    <a href="https://github.com/bhaktishelke" target="_blank" class="project-card reveal reveal-delay-2">
+      <div class="project-header">
+        <div class="project-icon icon-coral">⚡</div>
+        <span class="project-link-arrow">↗</span>
+      </div>
+      <div class="project-title">LLM Data Extraction Tool</div>
+      <div class="project-desc">Internal tool that extracts structured data from unstructured text — reports, forms, PDFs — and summarizes findings for non-technical users. Cut manual data entry time by ~60%.</div>
+      <div class="project-tags">
+        <span class="tag">OpenAI API</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Python</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="section-label">// career</div>
+  <h2 class="section-title reveal">Experience</h2>
+  <p class="section-subtitle reveal">Where I've built, shipped, and learned.</p>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <div>
+          <div class="timeline-company">Harlem Children's Zone</div>
+          <div class="timeline-role">AI Engineer & Data Scientist</div>
+        </div>
+        <div class="timeline-period">Current · New York, NY</div>
+      </div>
+      <ul class="timeline-bullets">
+        <li>Build and deploy AI/ML models to enhance program effectiveness for 13,000+ children across NYC</li>
+        <li>Design data pipelines and predictive systems that inform leadership strategy and resource allocation</li>
+        <li>Leverage Python, PyTorch, and LLMs to turn multi-source nonprofit data into actionable intelligence</li>
+        <li>Partner with non-technical stakeholders to communicate complex findings and drive data-informed change</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <div>
+          <div class="timeline-company">SoGoSurvey</div>
+          <div class="timeline-role">Machine Learning Engineer</div>
+        </div>
+        <div class="timeline-period">Prior Role</div>
+      </div>
+      <ul class="timeline-bullets">
+        <li>Developed and shipped ML models to improve survey functionality and user engagement on a CRM platform</li>
+        <li>Owned the full ML lifecycle: problem framing, feature engineering, training, and production deployment</li>
+        <li>Boosted analytical capabilities that directly impacted customer data quality and retention metrics</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <div>
+          <div class="timeline-company">JSW Steel India</div>
+          <div class="timeline-role">Data Research Analyst — Analytics & Modeling</div>
+        </div>
+        <div class="timeline-period">Early Career · India</div>
+      </div>
+      <ul class="timeline-bullets">
+        <li>Built predictive models and BI tools for strategic decision-making in a high-stakes industrial environment</li>
+        <li>Developed expertise in rigorous data analysis, ETL design, and executive reporting at scale</li>
+        <li>Applied statistical modeling to support operational intelligence for one of India's largest steel producers</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CONTACT ── -->
+<div class="contact-section" id="contact">
+  <div class="contact-card reveal">
+    <h2>Let's build something<br>remarkable together.</h2>
+    <p>Open to full-time roles, collaborations, and interesting conversations about AI, data, and impact.</p>
+    <div class="contact-actions">
+      <a href="/cdn-cgi/l/email-protection#cba9a3aaa0bfa2b8a3aea7a0ae8baea6aaa2a7e5a8a4a6" class="btn-primary">Say Hello ✉</a>
+      <a href="https://linkedin.com/in/bhakti-shelke" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      <a href="https://github.com/bhaktishelke" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-left">© 2026 Bhakti Shelke · Built with ❤ and data</div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/bhakti-shelke" target="_blank">LinkedIn</a>
+    <a href="https://github.com/bhaktishelke" target="_blank">GitHub</a>
+    <a href="/cdn-cgi/l/email-protection#ec8e848d8798859f8489808789ac89818d8580c28f8381">Email</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.cl
